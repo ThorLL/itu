@@ -33,18 +33,14 @@ func createStudent(student student) {
 	jsonValue, _ := json.Marshal(student)
 	request, _ := http.NewRequest("POST", URL, bytes.NewBuffer(jsonValue))
 	doRequest(request)
-
 }
 
 func getStudentByID(ID string) student {
 	URL := URLBASE + "students/" + ID
 
 	request, _ := http.NewRequest("GET", URL, nil)
-
 	var responseObject student
-
 	json.Unmarshal(getBodyBytes(request), &responseObject)
-
 	return responseObject
 }
 
