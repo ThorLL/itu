@@ -1,4 +1,4 @@
-module main
+module github.com/ThorLL/itu
 
 go 1.17
 
