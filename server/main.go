@@ -22,5 +22,5 @@ func main() {
 	router.DELETE("/teachers/:name", deleteTeacherByName)
 	router.PUT("/teachers/", updateTeacher)
 
-	router.Run("localhost:8080")
+	router.Run("localhost:3000")
 }

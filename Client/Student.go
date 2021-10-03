@@ -17,33 +17,33 @@ func updateStudent(student student) {
 	URL := URLBASE + "students/"
 
 	jsonValue, _ := json.Marshal(student)
-	req, _ := http.NewRequest("PUT", URL, bytes.NewBuffer(jsonValue))
-	doRequest(req)
+	request, _ := http.NewRequest("PUT", URL, bytes.NewBuffer(jsonValue))
+	doRequest(request)
 }
 
 func deleteStudent(ID string) {
 	URL := URLBASE + "students/" + ID
-	req, _ := http.NewRequest("DELETE", URL, nil)
-	doRequest(req)
+	request, _ := http.NewRequest("DELETE", URL, nil)
+	doRequest(request)
 }
 
 func createStudent(student student) {
 	URL := URLBASE + "students/"
 
 	jsonValue, _ := json.Marshal(student)
-	req, _ := http.NewRequest("POST", URL, bytes.NewBuffer(jsonValue))
-	doRequest(req)
+	request, _ := http.NewRequest("POST", URL, bytes.NewBuffer(jsonValue))
+	doRequest(request)
 
 }
 
 func getStudentByID(ID string) student {
 	URL := URLBASE + "students/" + ID
 
-	req, _ := http.NewRequest("GET", URL, nil)
+	request, _ := http.NewRequest("GET", URL, nil)
 
 	var responseObject student
 
-	json.Unmarshal(getBodyBytes(req), &responseObject)
+	json.Unmarshal(getBodyBytes(request), &responseObject)
 
 	return responseObject
 }
@@ -51,11 +51,11 @@ func getStudentByID(ID string) student {
 func getStudents() []student {
 	URL := URLBASE + "students/"
 
-	req, _ := http.NewRequest("GET", URL, nil)
+	request, _ := http.NewRequest("GET", URL, nil)
 
 	var responseObject []student
 
-	json.Unmarshal(getBodyBytes(req), &responseObject)
+	json.Unmarshal(getBodyBytes(request), &responseObject)
 
 	return responseObject
 }

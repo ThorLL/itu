@@ -38,9 +38,9 @@ func postCourses(c *gin.Context) {
 func getCourseByID(c *gin.Context) {
 	id := c.Param("id")
 
-	for _, s := range courses {
-		if s.ID == id {
-			c.IndentedJSON(http.StatusOK, s)
+	for _, course := range courses {
+		if course.ID == id {
+			c.IndentedJSON(http.StatusOK, course)
 			return
 		}
 	}
@@ -62,17 +62,17 @@ func deleteCourseByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "course not found"})
 }
 
-func removeCourses(s []course, index int) []course {
-	return append(s[:index], s[index+1:]...)
+func removeCourses(courses []course, index int) []course {
+	return append(courses[:index], courses[index+1:]...)
 }
 
-func removeCourse(s []course, id string) []course {
-	for i := 0; i < len(s); i++ {
-		if s[i].ID == id {
-			return removeCourses(s, i)
+func removeCourse(c []course, id string) []course {
+	for i := 0; i < len(c); i++ {
+		if c[i].ID == id {
+			return removeCourses(c, i)
 		}
 	}
-	return s
+	return c
 }
 
 func removeCourseForStudents(s []student, id string) {
@@ -81,9 +81,9 @@ func removeCourseForStudents(s []student, id string) {
 	}
 }
 
-func removeCourseForTeachers(s []teacher, id string) {
-	for i := 0; i < len(s); i++ {
-		s[i].Courses = removeCourse(s[i].Courses, id)
+func removeCourseForTeachers(t []teacher, id string) {
+	for i := 0; i < len(t); i++ {
+		t[i].Courses = removeCourse(t[i].Courses, id)
 	}
 }
 

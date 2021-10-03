@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-const URLBASE = "http://localhost:8080/"
+const URLBASE = "http://localhost:3000/"
 
 func main() {
 	testStudentRequests()
@@ -97,20 +97,20 @@ func testCoursesRequests() {
 	fmt.Printf("%+v\n", getCourses())
 }
 
-func getBodyBytes(req *http.Request) []byte {
+func getBodyBytes(request *http.Request) []byte {
 	client := &http.Client{}
-	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Content-Type", "application/json")
-	resp, _ := client.Do(req)
-	defer resp.Body.Close()
-	bodyBytes, _ := ioutil.ReadAll(resp.Body)
+	request.Header.Add("Accept", "application/json")
+	request.Header.Add("Content-Type", "application/json")
+	response, _ := client.Do(request)
+	defer response.Body.Close()
+	bodyBytes, _ := ioutil.ReadAll(response.Body)
 	return bodyBytes
 }
 
-func doRequest(req *http.Request) {
+func doRequest(request *http.Request) {
 	client := &http.Client{}
-	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Content-Type", "application/json")
-	resp, _ := client.Do(req)
-	defer resp.Body.Close()
+	request.Header.Add("Accept", "application/json")
+	request.Header.Add("Content-Type", "application/json")
+	response, _ := client.Do(request)
+	defer response.Body.Close()
 }

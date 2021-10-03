@@ -16,33 +16,33 @@ func updateCourse(course course) {
 	URL := URLBASE + "courses/"
 
 	jsonValue, _ := json.Marshal(course)
-	req, _ := http.NewRequest("PUT", URL, bytes.NewBuffer(jsonValue))
-	doRequest(req)
+	request, _ := http.NewRequest("PUT", URL, bytes.NewBuffer(jsonValue))
+	doRequest(request)
 }
 
 func deleteCourse(ID string) {
 	URL := URLBASE + "courses/" + ID
-	req, _ := http.NewRequest("DELETE", URL, nil)
-	doRequest(req)
+	request, _ := http.NewRequest("DELETE", URL, nil)
+	doRequest(request)
 }
 
 func createCourse(course course) {
 	URL := URLBASE + "courses/"
 
 	jsonValue, _ := json.Marshal(course)
-	req, _ := http.NewRequest("POST", URL, bytes.NewBuffer(jsonValue))
-	doRequest(req)
+	request, _ := http.NewRequest("POST", URL, bytes.NewBuffer(jsonValue))
+	doRequest(request)
 
 }
 
 func getCourseByID(id string) course {
 	URL := URLBASE + "courses/" + id
 
-	req, _ := http.NewRequest("GET", URL, nil)
+	request, _ := http.NewRequest("GET", URL, nil)
 
 	var responseObject course
 
-	json.Unmarshal(getBodyBytes(req), &responseObject)
+	json.Unmarshal(getBodyBytes(request), &responseObject)
 
 	return responseObject
 }
@@ -50,11 +50,11 @@ func getCourseByID(id string) course {
 func getCourses() []course {
 	URL := URLBASE + "courses/"
 
-	req, _ := http.NewRequest("GET", URL, nil)
+	request, _ := http.NewRequest("GET", URL, nil)
 
 	var responseObject []course
 
-	json.Unmarshal(getBodyBytes(req), &responseObject)
+	json.Unmarshal(getBodyBytes(request), &responseObject)
 
 	return responseObject
 }

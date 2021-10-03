@@ -35,9 +35,9 @@ func postTeachers(c *gin.Context) {
 func getTeacherByName(c *gin.Context) {
 	name := c.Param("name")
 
-	for _, s := range teachers {
-		if s.Name == name {
-			c.IndentedJSON(http.StatusOK, s)
+	for _, t := range teachers {
+		if t.Name == name {
+			c.IndentedJSON(http.StatusOK, t)
 			return
 		}
 	}
@@ -57,8 +57,8 @@ func deleteTeacherByName(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "teacher not found"})
 }
 
-func removeTeacher(s []teacher, index int) []teacher {
-	return append(s[:index], s[index+1:]...)
+func removeTeacher(t []teacher, index int) []teacher {
+	return append(t[:index], t[index+1:]...)
 }
 
 func updateTeacher(c *gin.Context) {
