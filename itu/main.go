@@ -24,7 +24,6 @@ import (
 
 // @host localhost:3000
 // @BasePath /
-// @schemes http
 // @schemes https
 func main() {
 	// Gin instance
