@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
+	_ "docs/itu" // you need to update github.com/rizalgowandy/go-swag-sample with your own project path
 	"github.com/gin-gonic/gin"
-	_ "github.com/rizalgowandy/go-swag-sample/docs/ginsimple" // you need to update github.com/rizalgowandy/go-swag-sample with your own project path
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
