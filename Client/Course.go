@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	itu "github.com/ThorLL/itu/ITU"
 	"google.golang.org/grpc"
 	"log"
 	"net/http"
 	"time"
-	itu ""
 )
 
 type course struct {

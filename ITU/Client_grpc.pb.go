@@ -1,9 +1,8 @@
 package ITU
 
 import (
-	"Client"
-	"context"
-	"google.golang.org/grpc"
+	context "context"
+	grpc "google.golang.org/grpc"
 )
 
 type CourseClient interface {
