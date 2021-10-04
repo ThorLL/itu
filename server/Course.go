@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	itu "github.com/ThorLL/itu/itu"
+	itu "github.com/ThorLL/itu"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
