@@ -1,8 +1,8 @@
 syntax = "proto2";
 
-package ITU;
+package itu;
 
-option go_package = "./ITU";
+option go_package = "./itu";
 
 service CourseMethods{
   rpc updateCourse(Course) returns (Empty);

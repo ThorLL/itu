@@ -13,19 +13,12 @@ type course struct {
 }
 
 func updateCourse(course course) {
-
-}
-
-/*
-func updateCourse(course course) {
 	URL := URLBASE + "courses/"
 
 	jsonValue, _ := json.Marshal(course)
 	request, _ := http.NewRequest("PUT", URL, bytes.NewBuffer(jsonValue))
 	doRequest(request)
 }
-
-*/
 
 func deleteCourse(ID string) {
 	URL := URLBASE + "courses/" + ID

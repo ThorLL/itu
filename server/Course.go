@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+	itu "github.com/ThorLL/itu/itu"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -23,7 +25,9 @@ var courses = []course{
 func getCourses(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, courses)
 }
+func createCourse(ctx context.Context, in *pb.HelloRequest) {
 
+}
 func postCourses(c *gin.Context) {
 	var newCourse course
 

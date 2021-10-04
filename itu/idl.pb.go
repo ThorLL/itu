@@ -4,7 +4,7 @@
 // 	protoc        v3.17.3
 // source: itu/idl.proto
 
-package ITU
+package itu
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
