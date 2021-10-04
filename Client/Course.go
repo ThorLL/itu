@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	pb "github.com/ThorLL/itu/Client/Client_grpc.pb.go"
 	"google.golang.org/grpc"
 	"log"
 	"net/http"
 	"time"
+	itu ""
 )
 
 type course struct {
@@ -21,7 +21,7 @@ func updateCourse(course course) {
 	URL := URLBASE + "courses/"
 
 	conn, _ := grpc.Dial(URL)
-	c := pb.NewCourseClient(conn)
+	c := NewCourseClient(conn)
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	r, err := c.updateCourse(ctx, &pb.HelloRequest{Name: name})
 	if err != nil {
