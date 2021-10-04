@@ -2,31 +2,18 @@ package main
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
-	ITU "github.com/ThorLL/itu/ITU"
-	"google.golang.org/grpc"
-	"log"
 	"net/http"
-	"time"
 )
 
 type course struct {
-	ID     string `json:"id" binding:"required"`
-	Name   string `json:"name"`
-	Rating int    `json:"rating"`
+	ID     string
+	Name   string
+	Rating int
 }
 
 func updateCourse(course course) {
-	URL := URLBASE + "courses/"
 
-	conn, _ := grpc.Dial(URL)
-	c := ITU.NewCourseClient(conn)
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	_, err := c.updateCourse(ctx, course)
-	if err != nil {
-		log.Fatalf("could not greet: %v", err)
-	}
 }
 
 /*
@@ -37,6 +24,7 @@ func updateCourse(course course) {
 	request, _ := http.NewRequest("PUT", URL, bytes.NewBuffer(jsonValue))
 	doRequest(request)
 }
+
 */
 
 func deleteCourse(ID string) {
