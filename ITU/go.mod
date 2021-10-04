@@ -1,4 +1,4 @@
-module ITU
+module github.com/ThorLL/itu/ITU
 
 go 1.17
 

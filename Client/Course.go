@@ -1,10 +1,10 @@
 package main
 
 import (
-	ITU "./ITU"
 	"bytes"
 	"context"
 	"encoding/json"
+	ITU "github.com/ThorLL/itu/ITU"
 	"google.golang.org/grpc"
 	"log"
 	"net/http"
