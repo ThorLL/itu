@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
-	itu "github.com/ThorLL/itu"
+	"fmt"
+	"github.com/ThorLL/itu"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	//"net/http"
 )
 
 type course struct {
@@ -22,21 +24,18 @@ var courses = []course{
 	{ID: "6", Name: "ALGO", Rating: 8},
 }
 
+func (s *server) createCourse(ctx context.Context, in *itu.Course) {
+	fmt.Printf("Received: %v\n", in.GetID())
+	var newCourse = course{
+		ID:     in.GetID(),
+		Name:   in.GetName(),
+		Rating: in.GetRating(),
+	}
+	courses = append(courses, newCourse)
+}
+
 func getCourses(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, courses)
-}
-func createCourse(ctx context.Context, in *pb.HelloRequest) {
-
-}
-func postCourses(c *gin.Context) {
-	var newCourse course
-
-	if err := c.BindJSON(&newCourse); err != nil {
-		return
-	}
-
-	courses = append(courses, newCourse)
-	c.IndentedJSON(http.StatusCreated, newCourse)
 }
 
 func getCourseByID(c *gin.Context) {

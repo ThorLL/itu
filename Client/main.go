@@ -4,15 +4,24 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-
 )
 
-const URLBASE = "http://localhost:3000/"
+const URLBASE = "http://localhost:50051/"
 
 func main() {
-	testStudentRequests()
-	testTeacherRequests()
-	testCoursesRequests()
+	/*
+		testStudentRequests()
+		testTeacherRequests()
+		testCoursesRequests()
+	*/
+	newCourse := course{
+		ID:     "69",
+		Name:   "someNameOFCourse",
+		Rating: 3000,
+	}
+	createGRPCCourse(newCourse)
+	fmt.Printf(getCourseByID("2").Name)
+	fmt.Printf(getCourseByID("69").Name)
 }
 
 func testStudentRequests() {

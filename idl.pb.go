@@ -112,7 +112,7 @@ type Course struct {
 
 	ID     *string `protobuf:"bytes,1,req,name=ID" json:"ID,omitempty"`
 	Name   *string `protobuf:"bytes,2,opt,name=Name" json:"Name,omitempty"`
-	Rating *int32  `protobuf:"varint,3,opt,name=Rating" json:"Rating,omitempty"`
+	Rating *int    `protobuf:"varint,3,opt,name=Rating" json:"Rating,omitempty"`
 }
 
 func (x *Course) Reset() {
@@ -161,7 +161,7 @@ func (x *Course) GetName() string {
 	return ""
 }
 
-func (x *Course) GetRating() int32 {
+func (x *Course) GetRating() int {
 	if x != nil && x.Rating != nil {
 		return *x.Rating
 	}
