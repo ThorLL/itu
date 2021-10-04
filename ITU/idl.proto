@@ -1,6 +1,6 @@
 syntax = "proto2";
 
-package main;
+package ITU;
 
 option go_package = "./";
 

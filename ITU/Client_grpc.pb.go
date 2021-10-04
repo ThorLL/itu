@@ -7,14 +7,14 @@ import (
 
 type CourseClient interface {
 	// Sends a greeting
-	updateCourse(ctx context.Context, in *Client.course, opts ...grpc.CallOption)
+	updateCourse(ctx context.Context, in *Course, opts ...grpc.CallOption)
 }
 
 type courseClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func (c *courseClient) updateCourse(ctx context.Context, in *Client.course, opts ...grpc.CallOption) {
+func (c *courseClient) updateCourse(ctx context.Context, in *Course, opts ...grpc.CallOption) {
 	out := "updated"
 	c.cc.Invoke(ctx, "/updateCourse", in, out, opts...)
 }

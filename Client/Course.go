@@ -1,10 +1,10 @@
 package main
 
 import (
+	ITU "./ITU"
 	"bytes"
 	"context"
 	"encoding/json"
-	itu "github.com/ThorLL/itu/ITU"
 	"google.golang.org/grpc"
 	"log"
 	"net/http"
@@ -21,13 +21,12 @@ func updateCourse(course course) {
 	URL := URLBASE + "courses/"
 
 	conn, _ := grpc.Dial(URL)
-	c := NewCourseClient(conn)
+	c := ITU.NewCourseClient(conn)
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	r, err := c.updateCourse(ctx, &pb.HelloRequest{Name: name})
+	_, err := c.updateCourse(ctx, course)
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
-	log.Printf("Greeting: %s", r.GetMessage())
 }
 
 /*
