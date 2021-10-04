@@ -2,8 +2,13 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
+	pb "github.com/ThorLL/itu/Client/Client_grpc.pb.go"
+	"google.golang.org/grpc"
+	"log"
 	"net/http"
+	"time"
 )
 
 type course struct {
@@ -15,10 +20,25 @@ type course struct {
 func updateCourse(course course) {
 	URL := URLBASE + "courses/"
 
+	conn, _ := grpc.Dial(URL)
+	c := pb.NewCourseClient(conn)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	r, err := c.updateCourse(ctx, &pb.HelloRequest{Name: name})
+	if err != nil {
+		log.Fatalf("could not greet: %v", err)
+	}
+	log.Printf("Greeting: %s", r.GetMessage())
+}
+
+/*
+func updateCourse(course course) {
+	URL := URLBASE + "courses/"
+
 	jsonValue, _ := json.Marshal(course)
 	request, _ := http.NewRequest("PUT", URL, bytes.NewBuffer(jsonValue))
 	doRequest(request)
 }
+*/
 
 func deleteCourse(ID string) {
 	URL := URLBASE + "courses/" + ID
