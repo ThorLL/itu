@@ -12,7 +12,7 @@ import (
 type course struct {
 	ID     string `json:"id" binding:"required"`
 	Name   string `json:"name"`
-	Rating int    `json:"rating"`
+	Rating int32  `json:"rating"`
 }
 
 var courses = []course{
@@ -24,7 +24,7 @@ var courses = []course{
 	{ID: "6", Name: "ALGO", Rating: 8},
 }
 
-func (s *server) createCourse(ctx context.Context, in *itu.Course) {
+func (s *server) createCourse(ctx context.Context, in *itu.Course) itu.Empty {
 	fmt.Printf("Received: %v\n", in.GetID())
 	var newCourse = course{
 		ID:     in.GetID(),
@@ -32,6 +32,7 @@ func (s *server) createCourse(ctx context.Context, in *itu.Course) {
 		Rating: in.GetRating(),
 	}
 	courses = append(courses, newCourse)
+	return itu.Empty{}
 }
 
 func getCourses(c *gin.Context) {

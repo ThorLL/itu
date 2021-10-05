@@ -14,7 +14,7 @@ import (
 type course struct {
 	ID     string
 	Name   string
-	Rating int
+	Rating int32
 }
 
 func updateCourse(course course) {
@@ -31,6 +31,7 @@ func deleteCourse(ID string) {
 	doRequest(request)
 }
 
+/*
 func createCourse(course course) {
 	URL := URLBASE + "courses/"
 
@@ -39,9 +40,13 @@ func createCourse(course course) {
 	doRequest(request)
 }
 
-func createGRPCCourse(course course) {
+
+*/
+const address = "localhost:50051"
+
+func CreateCourse(course course) {
 	//URL := URLBASE + "courses/"
-	address := "localhost:3000"
+
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		fmt.Printf("did not connect: %v\n", err)
@@ -55,7 +60,7 @@ func createGRPCCourse(course course) {
 		Name:   &course.Name,
 		Rating: &course.Rating,
 	}
-	_, err = c.UpdateCourse(ctx, &messageCourse)
+	_, err = c.CreateCourse(ctx, &messageCourse)
 	if err != nil {
 		fmt.Println(err)
 	}

@@ -35,7 +35,7 @@ func NewCourseMethodsClient(cc grpc.ClientConnInterface) CourseMethodsClient {
 
 func (c *courseMethodsClient) UpdateCourse(ctx context.Context, in *Course, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/ITU.CourseMethods/updateCourse", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/itu.CourseMethods/updateCourse", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func (c *courseMethodsClient) UpdateCourse(ctx context.Context, in *Course, opts
 
 func (c *courseMethodsClient) CreateCourse(ctx context.Context, in *Course, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/ITU.CourseMethods/createCourse", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/itu.CourseMethods/CreateCourse", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func (c *courseMethodsClient) CreateCourse(ctx context.Context, in *Course, opts
 
 func (c *courseMethodsClient) DeleteCourse(ctx context.Context, in *ID, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/ITU.CourseMethods/deleteCourse", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/itu.CourseMethods/deleteCourse", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func (c *courseMethodsClient) DeleteCourse(ctx context.Context, in *ID, opts ...
 
 func (c *courseMethodsClient) GetCourseByID(ctx context.Context, in *ID, opts ...grpc.CallOption) (*Course, error) {
 	out := new(Course)
-	err := c.cc.Invoke(ctx, "/ITU.CourseMethods/getCourseByID", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/itu.CourseMethods/getCourseByID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func (c *courseMethodsClient) GetCourseByID(ctx context.Context, in *ID, opts ..
 
 func (c *courseMethodsClient) GetCourses(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Courses, error) {
 	out := new(Courses)
-	err := c.cc.Invoke(ctx, "/ITU.CourseMethods/getCourses", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/itu.CourseMethods/getCourses", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -132,7 +132,7 @@ func _CourseMethods_UpdateCourse_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ITU.CourseMethods/updateCourse",
+		FullMethod: "/itu.CourseMethods/updateCourse",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CourseMethodsServer).UpdateCourse(ctx, req.(*Course))
@@ -150,7 +150,7 @@ func _CourseMethods_CreateCourse_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ITU.CourseMethods/createCourse",
+		FullMethod: "/itu.CourseMethods/CreateCourse",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CourseMethodsServer).CreateCourse(ctx, req.(*Course))
@@ -168,7 +168,7 @@ func _CourseMethods_DeleteCourse_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ITU.CourseMethods/deleteCourse",
+		FullMethod: "/itu.CourseMethods/deleteCourse",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CourseMethodsServer).DeleteCourse(ctx, req.(*ID))
@@ -186,7 +186,7 @@ func _CourseMethods_GetCourseByID_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ITU.CourseMethods/getCourseByID",
+		FullMethod: "/itu.CourseMethods/getCourseByID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CourseMethodsServer).GetCourseByID(ctx, req.(*ID))
@@ -204,7 +204,7 @@ func _CourseMethods_GetCourses_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ITU.CourseMethods/getCourses",
+		FullMethod: "/itu.CourseMethods/getCourses",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CourseMethodsServer).GetCourses(ctx, req.(*Empty))
@@ -216,7 +216,7 @@ func _CourseMethods_GetCourses_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CourseMethods_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "ITU.CourseMethods",
+	ServiceName: "itu.CourseMethods",
 	HandlerType: (*CourseMethodsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -224,7 +224,7 @@ var CourseMethods_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CourseMethods_UpdateCourse_Handler,
 		},
 		{
-			MethodName: "createCourse",
+			MethodName: "CreateCourse",
 			Handler:    _CourseMethods_CreateCourse_Handler,
 		},
 		{
@@ -241,5 +241,5 @@ var CourseMethods_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "itu/idl.proto",
+	Metadata: "idl.proto",
 }

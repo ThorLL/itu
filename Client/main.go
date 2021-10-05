@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-const URLBASE = "http://localhost:50051/"
+const URLBASE = "http://localhost:3000/"
 
 func main() {
 	/*
@@ -19,9 +19,11 @@ func main() {
 		Name:   "someNameOFCourse",
 		Rating: 3000,
 	}
-	createGRPCCourse(newCourse)
-	fmt.Printf(getCourseByID("2").Name)
+	CreateCourse(newCourse)
+	/*fmt.Printf(getCourseByID("2").Name)
 	fmt.Printf(getCourseByID("69").Name)
+
+	*/
 }
 
 func testStudentRequests() {
@@ -99,7 +101,7 @@ func testCoursesRequests() {
 		Name:   "Course 2",
 		Rating: 10,
 	}
-	createCourse(course1)
+	CreateCourse(course1)
 	fmt.Printf("%+v\n", getCourses())
 	deleteCourse("1")
 	fmt.Printf("%+v\n", getCourses())

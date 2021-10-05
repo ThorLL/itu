@@ -6,24 +6,16 @@ option go_package = "./itu";
 
 service CourseMethods{
   rpc updateCourse(Course) returns (Empty);
-  rpc createCourse(Course) returns (Empty);
+  rpc CreateCourse(Course) returns (Empty);
   rpc deleteCourse(ID) returns (Empty);
   rpc getCourseByID(ID) returns (Course);
   rpc getCourses(Empty) returns (Courses);
 }
-
-message Empty {
-
-}
-message ID {
-  required string ID      = 1;
-}
-
+message Empty {}
+message ID {required string ID      = 1;}
 message Course {
   required string ID      = 1;
   optional string Name    = 2;
   optional int32 Rating   = 3;
 }
-message Courses {
-  repeated Course courses = 1;
-}
+message Courses {repeated Course courses = 1;}

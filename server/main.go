@@ -8,13 +8,16 @@ import (
 	"net"
 )
 
-const port = ":3000"
-
 type server struct {
 	itu.UnimplementedCourseMethodsServer
 }
 
 func main() {
+	go startRest("3000")
+	go startGRPC("50051")
+}
+
+func startRest(port string) {
 	router := gin.Default()
 	router.GET("/students", getStudents)
 	router.GET("/students/:id", getStudentByID)
@@ -33,10 +36,12 @@ func main() {
 	router.DELETE("/teachers/:name", deleteTeacherByName)
 	router.PUT("/teachers/", updateTeacher)
 
-	router.Run("localhost:50051")
+	router.Run("localhost:" + port)
+}
 
-	lis, err := net.Listen("tcp", port)
-
+func startGRPC(port string) {
+	lis, err := net.Listen("tcp", ":"+port)
+	fmt.Printf("et eller andet")
 	if err != nil {
 		fmt.Printf("failed to listen: %v", err)
 	}
